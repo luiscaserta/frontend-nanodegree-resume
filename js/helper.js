@@ -24,7 +24,7 @@ var HTMLblog = '<li class="flex-item"><span class="orange-text">blog</span><span
 var HTMLlocation = '<li class="flex-item"><span class="orange-text">location</span><span class="white-text">%data%</span></li>';
 
 var HTMLbioPic = '<img src="%data%" class="biopic">';
-var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
+var HTMLwelcomeMsg = '<span class="welcome-message"><br>%data%</span>';
 
 var HTMLskillsStart = '<h3 id="skills-h3">Skills at a Glance:</h3><ul id="skills" class="flex-box"></ul>';
 var HTMLskills = '<li class="flex-item"><span class="white-text">%data%</span></li>';
@@ -172,12 +172,13 @@ function initializeMap() {
     // or hover over a pin on a map. They usually contain more information
     // about a location.
     var infoWindow = new google.maps.InfoWindow({
-      content: name
+      content: name + "<br>" + "<b> Lived Here!!</b>"
     });
 
     // hmmmm, I wonder what this is about...
     google.maps.event.addListener(marker, 'click', function() {
       // your code goes here!
+      infoWindow.open(map, marker);
     });
 
     // this is where the pin actually gets added to the map.
@@ -219,7 +220,7 @@ function initializeMap() {
       // Actually searches the Google Maps API for location data and runs the callback
       // function with the search results after each search.
       service.textSearch(request, callback);
-    })
+    });
   }
 
   // Sets the boundaries of the map based on pin locations

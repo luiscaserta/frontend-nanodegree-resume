@@ -1,8 +1,6 @@
 /*
 Here is my JavaScript Code for final project to build the resume.
 */
-
-
 var bio = {
 	"name": "Luis Caserta",
 	"role": "Front End Web Developer - in Training!!",
@@ -13,46 +11,42 @@ var bio = {
 		"twitter": "notwitter@luiscaserta",
 		"location": "Montreal"
 	},
-	"welcomeMessage": "Let's have some fun - Teach......, Learn......., Continuous Improvement...!!!",
+	"welcomeMessage": "Let's have some fun. \
+	<br> Together, we can share your idea with the world!!",
 	"skills": [
-		"English, French and Spanish", "Friendly", "Persistent", "Happy"
+		"English, French and Spanish", "Python", "HTML / CSS", "Javascript"
 	],
-	"bioPic" : "images/fry.jpg"
+	"bioPic" : "images/Luis.jpg"
 }
+bio.display = function () {
+	var formattedName = HTMLheaderName.replace("%data%",  bio.name);
+	var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+	var formattedbioPic = HTMLbioPic.replace("%data%",bio.bioPic);
+	var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+	var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+	var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+	var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+	var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+	var formattedWelcome = HTMLwelcomeMsg. replace("%data%", bio.welcomeMessage);
+	$("#header").append(formattedbioPic);
+	$("#header").prepend(formattedRole);
+	$("#header").prepend(formattedName);
+	$("#topContacts").append(formattedMobile);
+	$("#topContacts").append(formattedEmail);
+	$("#topContacts").append(formattedGithub);
+	$("#topContacts").append(formattedTwitter);
+	$("#topContacts").append(formattedLocation);
+	$("#header").append(formattedWelcome);
+	if (bio.skills.length >= 0) {
+		$("#header").append(HTMLskillsStart);	
+		for (skill in bio.skills) {
+			var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
+			$("#skills").append(formattedSkill);
 
-var formattedName = HTMLheaderName.replace("%data%",  bio.name);
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-var formattedbioPic = HTMLbioPic.replace("%data%",bio.bioPic);
-
-$("#header").append(formattedName);
-$("#header").append(formattedRole);
-$("#header").append(formattedbioPic);
-
-var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
-var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
-var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
-
-
-$("#header").append(formattedMobile);
-$("#header").append(formattedEmail);
-$("#header").append(formattedGithub);
-$("#header").append(formattedTwitter);
-
-if (bio.skills.length > 0) {
-	$("#header").append(HTMLskillsStart);
-
-	var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
-	$("#skills").append(formattedSkill);
-	formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
-	$("#skills").append(formattedSkill);
-	formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-	$("#skills").append(formattedSkill);
-	formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
-	$("#skills").append(formattedSkill);
+		}		
+	}
 }
-
-
+bio.display();
 var education = {
 	"schools": [
 		{
@@ -66,7 +60,7 @@ var education = {
 		{
 			"name": "ILSC - Montreal",
 			"location": "Montreal, Quebec", 
-			"degree": "ESL", 
+			"degree": "Certification", 
 			"majors": "DELTA", 
 			"dates": 2014, 
 			"url": "www.ilsc.com/montreal"
@@ -76,11 +70,40 @@ var education = {
 		{
 			"title": "Introduction to Programming Nano Degree",
 			"school": "Udacity",
-			"dates": 2016
+			"dates": 2016,
+			"url": "www.udacity.com"
 		}
 	]
 }
-
+function displayEducation(){
+	for (school in education.schools) {
+		var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
+		var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+		var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+		var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+		var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
+		var formattedUrl = HTMLonlineURL.replace("%data%", education.schools[school].url);
+		$("#education").append(HTMLschoolStart);
+		$(".education-entry:last").append(formattedName);
+		$(".education-entry:last").append(formattedDegree);
+		$(".education-entry:last").append(formattedDates);
+		$(".education-entry:last").append(formattedLocation);
+		$(".education-entry:last").append(formattedMajor);
+		$(".education-entry:last").append(formattedUrl);
+	}
+	for (onlineCourse in education.onlineCourses) {
+		var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[onlineCourse].title);
+		var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[onlineCourse].school);
+		var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[onlineCourse].dates);
+		var formattedUrl = HTMLonlineURL.replace("%data%", education.onlineCourses[onlineCourse].url);
+		$("#education").append(HTMLschoolStart);
+		$(".education-entry:last").append(formattedTitle);
+		$(".education-entry:last").append(formattedSchool);
+		$(".education-entry:last").append(formattedDates);
+		$(".education-entry:last").append(formattedUrl);
+	}
+}
+displayEducation();
 var work = {
 	"jobs": [
 		{
@@ -99,20 +122,15 @@ var work = {
 		}
 	]
 }
-
 function displayWork(){
 	for (job in work.jobs) {
-	
-
 		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
 		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
 		var formattedEmployerTitle = formattedEmployer + formattedTitle;
 		var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
 		var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
 		var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description)
-
 		$("#workExperience").append(HTMLworkStart);
-
 		$(".work-entry:last").append(formattedEmployerTitle);
 		$(".work-entry:last").append(formattedDates);
 		$(".work-entry:last").append(formattedLocation);
@@ -120,13 +138,11 @@ function displayWork(){
 	}
 }
 displayWork();
-
 $(document).click(function(loc) {
 	var x = loc.pageX;
 	var y = loc.pageY;
 	logClicks(x,y);
 });
-
 var projects = {
 	"projects": [
 		{
@@ -149,48 +165,31 @@ var projects = {
 		}
 	]
 }
-
-
 projects.display = function() {
 	for (project in projects.projects) {
-
 		$("#projects").append (HTMLprojectStart);
-
 		var formattedTitle = HTMLprojectTitle.replace("%data%",projects.projects[project].title);
 		$(".project-entry:last").append(formattedTitle);
-
 		var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
 		$(".project-entry:last").append(formattedDates);
-
 		var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
 		$(".project-entry:last").append(formattedDescription);
-
 		if (projects.projects[project].images.length >= 0) {
 			for (image in projects.projects[project].images) {
 				var formattedImages = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
 				$(".project-entry:last").append(formattedImages);	
 			}
 		}
-		
-
 	}
 }
-
 projects.display();
-
 function inName(name) {
 	var name = name.trim().split(" ")
 	console.log(name);
 	name[1] = name[1].toUpperCase();
 	name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
-	
-
 	return name[0] + " " + name[1];
 }
 $("#main").append(internationalizeButton);
-
-
 // Line of code to activate google maps.
-
 $("#mapDiv").append(googleMap);
-
