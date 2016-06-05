@@ -11,7 +11,7 @@ h5,
 h6 {
   padding:0;
   margin:0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Amiri", serif; font-weight: 700; 
 }
 
 .clear-fix {
@@ -19,9 +19,14 @@ h6 {
 }
 
 .education-entry,
-.work-entry,
+.work-entry {
+  padding: 0 5%;
+}
+
+
 .project-entry {
   padding: 0 5%;
+  background-color: #008074;
 }
 
 h1 {
@@ -94,7 +99,7 @@ a {
 
 .welcome-message {
   font-style: italic;
-  font-size: 18px;
+  font-size: 30px;
   color: #f3f3f3;
   line-height: 28px;
 }
@@ -105,7 +110,7 @@ a {
 }
 
 .orange {
-  background-color: #f5ae23;
+  background-color: #4B4F71;
 }
 
 .orange-text {
@@ -129,7 +134,7 @@ a {
 
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color: #4B4F71;
 }
 
 .flex-box {
